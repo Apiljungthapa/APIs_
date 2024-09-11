@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}checksAPP{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/new.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+
+    {% block extra_css %}{% endblock %}
+    
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">checksAPP</h1>
+    </header>
+
+    <div class="background-blur"></div>
+    
+    <!-- Container for the form -->
+    <div class="container">
+        {% block content %} 
+        <!-- This is where the specific page content will go -->
+        
+        {% endblock %}
+        
+
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>Ai Detection App</h1>
+        </div>
+        <div class="nav-links">
+            <button id="startVideoNavBtn">Start Live Video</button>
+        </div>
+    </nav>
+
+   
+    <!-- Image Upload Section -->
+    <div class="dashboard">
+        <div class="container">
+            <!-- Image Upload Section -->
+            <div class="image-upload">
+                <h2>Upload an Image</h2>
+                
+                <!-- Form for uploading and detecting image -->
+                <form action="{{ url_for('upload_image') }}" method="POST" enctype="multipart/form-data">
+                    <div class="upload-box">
+                        <label for="imageUpload" class="center-button">Upload Image</label>
+                        <input type="file" name="file" id="imageUpload" accept="image/*" required>
+                        <button type="submit">Upload and Detect</button>
+                    </div>
+                </form>
+    
+                <!-- Form for generating image detection -->
+                <form action="{{ url_for('generate_detection') }}" method="POST">
+                    <button type="submit" class="new">Generate Image Detection</button>
+                </form>
+    
+                <!-- Display the processed image -->
+                {% if detected_image %}
+                    <h3>Detected Image:</h3>
+                    <img src="{{ url_for('show_image', filename=detected_image) }}" alt="Detected Image">
+                {% endif %}
+            </div>
+            </div>
+
+            
+
+            <!-- Live Video Section -->
+            <div class="live-video">
+                <h2>Live Video</h2>
+                <div class="video-box">
+                    <!-- Changing from video to img tag -->
+                    <img id="videoFeed" src="" alt="Live Video Feed" width="640" height="480">
+                    <button id="startVideoBtn" class="center-button">Start Live Video</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('startVideoBtn').addEventListener('click', function () {
+            // Set the videoFeed img src to the video_feed route
+            const videoFeed = document.getElementById('videoFeed');
+            videoFeed.src = "/video_feed";  // This loads the video stream
+        });
+
+        document.getElementById('startVideoNavBtn').addEventListener('click', function () {
+            // Same functionality for the nav button
+            const videoFeed = document.getElementById('videoFeed');
+            videoFeed.src = "/video_feed";
+        });
+    </script>
+</body>
+</html>

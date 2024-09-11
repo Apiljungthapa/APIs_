@@ -1,0 +1,39 @@
+/* Header */
+.header {
+    width: 100%;
+    padding: 20px;
+    background-color: transparent;
+    text-align: center;
+    position: relative;
+    top:-210px
+}
+
+.header-title {
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    position: fixed;
+}
+
+
+.flash-messages {
+    margin: 20px 0;
+  }
+  
+  .flash-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .flash-message.error_msg {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Registration - checksAPP{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+    <div class="title">Registration</div>
+    <div class="content">
+      <form action="/add_register" method="post">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" name="username" value="{{ request.form.username or '' }}" placeholder="Enter username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" name="email" value="{{ request.form.email or '' }}" placeholder="Enter email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" name="number" value="{{ request.form.number or '' }}" placeholder="Enter number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" name="full" value="{{ request.form.fullname or '' }}" placeholder="Enter full name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" name="password" value="{{ request.form.password or '' }}" placeholder="Enter password" required>
+          </div>
+
+          <div class="input-box">
+            <span class="details">confirm Password</span>
+            <input type="text" name="confirm_password" placeholder="Enter password" required>
+          </div>
+          
+        </div>
+
+        <div class="login-option">
+            Already have an account? <a href="{{ url_for('login') }}">Login</a>
+        </div>
+        
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+{% endblock %}
